@@ -10,32 +10,27 @@ header {
 }
 
 .cursos{
-    font-family: Arial;
     font-size: 13px;
     color: blue;
 }
 
 .telematica {
-    font-family: Arial;
     font-size: 13px;
     color: orange;
 }
 
 .computacao{
-    font-family: Arial;
     font-style: italic;
     font-size: 13px;
     color: green;
 }
 
 .quimica{
-    font-family: Arial;
     font-size: 13px;
     color: red;
 }
 
 .Aula{
-    font-family: Arial;
     font-size: 21px;
     color: magenta;
 }
