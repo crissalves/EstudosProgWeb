@@ -1,0 +1,50 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+body{
+    margin: 0 ;
+    padding: 0;
+}
+
+a {
+  margin-left: 15px;
+  color: black;
+  text-decoration: none;
+}
+
+.cabecalho{
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;            
+  background-color: #9AD8FF;
+  padding: 2%;
+}
+
+.principal{
+    display : flex;
+    padding: 2%;
+    gap: 2%;
+    flex-wrap: nowrap;
+}
+
+.texto{
+    width: 80%;
+    padding-left: 2%;
+    
+}
+
+.lateral{
+    width: 20%;
+    background-color:green;
+    padding: 2%;
+}
+
+.rodape{
+    text-align: center;
+    background-color: orange;
+    padding: 2%;
+}
