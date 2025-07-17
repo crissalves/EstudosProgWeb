@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Questão 03</title>
+        <meta charset = "UTF-8">
+        <meta name = "viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        function acharMaiorMenor18() {
+        var numeros = document.getElementById("txtNumeros").value;
+        numeros = numeros.split(",");
+        var maiores = 0;
+        var menores = 0;
+        for (let i = 0; i < numeros.length; i++) {
+            if (numeros[i] >= 18 && numeros[i] != 0) {
+            maiores ++;
+            } else {
+            menores ++;
+            }
+        }
+        document.write("Números maiores que 18: " + maiores.join(", ") + "<br>");
+        document.write("Números menores ou iguais a 18: " + menores.join(", "));
+        }
+    </script>
+    </head>
+    <body>
+        Números: <input type="text" id="txtNumeros">
+        <input type="button" value="Qual é os maiores e menores de 18 anos?" onclick="acharMaiorMenor18">
+    </body>
+</html> 

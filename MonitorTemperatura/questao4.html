@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Questão 04</title>
+        <meta charset = "UTF-8">
+        <meta name = "viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+         function separarData(){
+            var data = document.getElementById("txtData").value;
+            var partes = data.split("/");
+            if (partes.length === 3) {
+                document.write("O dia é " + partes[0] + " <br>");
+                document.write("O mês é " + partes[1] + " <br>");
+                document.write("O ano é " + partes[2] + " <br>");
+            }
+        }
+    </script>
+    </head>
+    <body>
+        Data: <input type="text" id="txtData">
+        <input type="button" value="Separar dia, mês e ano." onclick="separarData()">
+    </body>
+</html> 

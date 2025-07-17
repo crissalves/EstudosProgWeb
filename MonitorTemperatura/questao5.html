@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Questão 05</title>
+        <meta charset = "UTF-8">
+        <meta name = "viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        function inverteTextos(){
+            var texto = document.getElementById("txtTexto").value;
+            var textoInvertido = texto.split("").reverse().join("");
+            alert("Texto invertido: " + textoInvertido);
+        }
+    </script>
+    </head>
+    <body>
+        Texto: <input type="text" id="txtTexto">
+        <input type="button" value="Texto a ser invertido: " onclick="inverteTextos()">
+    </body>
+</html> 

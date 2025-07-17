@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Questão 03</title>
+        <meta charset = "UTF-8">
+        <meta name = "viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        function acharMaior(){
+        var numeros = document.getElementById("txtNumeros").value;
+        numeros = numeros.split(",");
+        var maior = parseInt(numeros[0]);
+        for (let i = 1; i < numeros.length; i++){
+            if (parseInt(numeros[i]) > maior) {
+            maior = parseInt(numeros[i]);
+            }
+        }
+        document.write("O maior número é " + maior);
+        }
+    </script>
+    </head>
+    <body>
+        Números: <input type="text" id="txtNumeros">
+        <input type="button" value="Qual é o maior número?" onclick="acharMaior()">
+    </body>
+</html> 
