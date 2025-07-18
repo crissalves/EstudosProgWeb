@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Questão 10</title>
+        <meta charset = "UTF-8">
+        <meta name = "viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        function inverterListaInteiros(){
+            var texto = document.getElementById("txtTexto").value;
+            var numerosArray = texto.split(",");
+            var numerosInvertidos = numerosArray.reverse().join(",");
+            alert("Lista de números invertida: " + numerosInvertidos);
+        }
+    </script>
+    </head>
+    <body>
+        Numeros: <input type="text" id="txtTexto">
+        <input type="button" value="Lista de numeros a ser invertido" onclick="inverterListaInteiros()">
+    </body>
+</html> 

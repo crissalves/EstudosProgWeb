@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Questão 08</title>
+        <meta charset = "UTF-8">
+        <meta name = "viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        function fatorialNumEncontra(){
+            let numeros = document.getElementById("txtNumero").value;
+            let numerosArray = numeros.split(",");
+            let resultado = ""; 
+            for(let i = 0; i < numerosArray.length; i++){
+                let num = parseInt(numerosArray[i]);
+                if(num >= 0){
+                    let fatorial = 1;
+                    for(let j = 1; j <= num; j++){
+                        fatorial *= j;
+                    }
+                    resultado += "O Fatorial de " + num +  " é " + fatorial + "\n";
+                }
+            }
+            alert(resultado || "Nenhum número válido encontrado.");
+        }
+    </script>
+    </head>
+    <body>
+        Números: <input type="text" id="txtNumero">
+        <input type="button" value="Calcular fatorial dos numeros: " onclick="fatorialNumEncontra()">
+    </body>
+</html> 

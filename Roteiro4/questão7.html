@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Questão 07</title>
+        <meta charset = "UTF-8">
+        <meta name = "viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        function somaImparesMulti3(){
+            let numeros = document.getElementById("txtNumero").value;
+            let listaNumeros = numeros.split(",");
+            let soma = 0;
+            for (let i = 0; i < listaNumeros.length; i++) {
+                let numero = parseInt(listaNumeros[i]);
+                if (numero % 2 !== 0 && numero % 3 === 0) {
+                    soma += numero;
+                }
+            }
+            alert("A soma dos números ímpares múltiplos de 3 é: " + soma);
+        }
+
+    </script>
+    </head>
+    <body>
+        Números: <input type="text" id="txtNumero">
+        <input type="button" value="Ordenar Lista de Inteiros: " onclick="somaImparesMulti3()">
+    </body>
+</html> 

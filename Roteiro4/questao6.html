@@ -8,6 +8,16 @@
         function ordenaLista(){
             var numero = document.getElementById("txtNumero").value;
             var numerosArray = numero.split(",").map(Number);
+            for (var i = 0; i < numerosArray.length - 1; i++) {
+                for (var j = 0; j < numerosArray.length - i - 1; j++) {
+                    if (numerosArray[j] > numerosArray[j + 1]) {
+                        var temp = numerosArray[j];
+                        numerosArray[j] = numerosArray[j + 1];
+                        numerosArray[j + 1] = temp;
+                    }
+                }
+            }
+            document.getElementById("txtNumero").value = numerosArray.join(",");
         }
     </script>
     </head>

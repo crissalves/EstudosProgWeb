@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Questão 08</title>
+        <meta charset = "UTF-8">
+        <meta name = "viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        function mediaAri(){
+            let numeros = document.getElementById("txtNumero").value;
+            let numerosArray = numeros.split(",");
+            let soma = 0;
+            let quantidade = numerosArray.length;
+            let positivosCount = 0;
+            let negativosCount = 0;
+            for(let i = 0; i < quantidade; i++){
+                let numero = parseFloat(numerosArray[i]);
+                if(!isNaN(numero)){
+                    soma += numero;
+                    if(numero > 0){
+                        positivosCount++;
+                    } else if(numero < 0){
+                        negativosCount++;
+                    }
+                }
+            }
+            let media = soma / quantidade;
+            let resultado = "Média Aritmética: " +media.toFixed(2) + "\n" +
+                           "Quantidade de números positivos: " + positivosCount + "\n" +
+                           "Quantidade de números negativos: " + negativosCount + "\n"+
+                           "Porcentagem de números positivos: " + ((positivosCount / quantidade) * 100).toFixed(2) + "%" + "\n" +
+                           "Porcentagem de números negativos: " + ((negativosCount / quantidade) * 100).toFixed(2) + "%";
+            alert(resultado);
+        }
+    </script>
+    </head>
+    <body>
+        Números: <input type="text" id="txtNumero">
+        <input type="button" value="Calcular média aritmética: " onclick="mediaAri()">
+    </body>
+</html> 
