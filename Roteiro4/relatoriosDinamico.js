@@ -7,10 +7,11 @@ const dadosDefault = [
     {produto: "Monitor", preco: 1200, quantidade: 3, vendedor:"Matheus"}
 ]
 
-function gerarRelatorio(vendas){
+const gerarRelatorio = (vendas) => {
     let totalGeral = 0;
     let relatorio = "Relatório de Vendas:\n";
-    let comissoesPorVendedor = {};
+    let comissoesPorVendedor = {}; 
+    let formatadorBRL = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
 
     for (let i = 0; i < vendas.length; i++) {
         const venda = vendas[i];
@@ -19,10 +20,10 @@ function gerarRelatorio(vendas){
         relatorio += 
             `- Produto: ${venda.produto}\n` +
             `  Quantidade: ${venda.quantidade}\n` +
-            `  Preço unitário: ${venda.preco.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}\n` +
-            `  Preço total: ${precoTotal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}\n` +
+            `  Preço unitário: ${formatadorBRL.format(venda.preco)}\n` +
+            `  Preço total: ${formatadorBRL.format(precoTotal)}\n` +
             `  Vendedor: ${venda.vendedor}\n` +
-            "-----------------------------\n";
+            "\n";
         totalGeral += precoTotal;
 
         if (!comissoesPorVendedor[venda.vendedor]) {
@@ -32,12 +33,13 @@ function gerarRelatorio(vendas){
     }
 
     relatorio += 
-        `Total Geral: ${totalGeral.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}\n` +
+        `.......... \n ` +
+        `Total Geral: ${formatadorBRL.format(totalGeral)}\n` +
         `Total de comissão (5%): \n`
         ;
 
     for (const vendedor in comissoesPorVendedor) {
-        relatorio += `${vendedor}: ${comissoesPorVendedor[vendedor].toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}\n`;
+        relatorio += `${vendedor}: ${formatadorBRL.format(comissoesPorVendedor[vendedor])}\n`;
     }
 
     console.log(relatorio);
