@@ -1,0 +1,105 @@
+const http = require('http')
+
+/*
+const crypto = require('crypto');
+
+// Criptografia de dados
+const criptografarMensagem = (texto, chaveSecreta) => {
+  const algorithm = 'aes-256-cbc';
+  const iv = crypto.randomBytes(16);
+  const cipher = crypto.createCipheriv(algorithm, Buffer.from(chaveSecreta), iv);
+  
+  let encrypted = cipher.update(texto, 'utf8', 'hex');
+  encrypted += cipher.final('hex');
+
+  // Retorna o IV junto com o texto criptografado
+  return `${iv.toString('hex')}:${encrypted}`;
+}
+
+// Função para descriptografar dados
+const decritografar(textoCriptografado, chaveSecreta) {
+  const algorithm = 'aes-256-cbc';
+  const [ivHex, encrypted] = textoCriptografado.split(':');
+
+  const iv = Buffer.from(ivHex, 'hex');
+  const decipher = crypto.createDecipheriv(algorithm, Buffer.from(chaveSecreta), iv);
+
+  let decrypted = decipher.update(encrypted, 'hex', 'utf8');
+  decrypted += decipher.final('utf8');
+
+  return decrypted;
+}
+*/
+const dono = {
+    "proprietario": "Silvio Santos",
+    "endereco": {
+        "cep": '05650-000',
+        "logradouro": 'Avenida Morumbi',
+        "complemento": 'de 4051/4052 a 5053/5054',
+        "bairro": 'Morumbi',
+        "localidade": 'São Paulo',
+        "uf": 'SP',
+        "geo": {
+            "lat": "-23.61919020307765",
+            "lng": "-46.70793551534256"
+        }
+    }
+  }
+  
+ 
+const getEndereco = cep => {
+    const url = `http://viacep.com.br/ws/${cep}/json/`
+    return new Promise((resolve, reject) => {
+        http.get(url, res => {
+            let resultado = ''
+    
+            res.on('data', dados => {
+                console.log(dados)
+                resultado += dados
+            })
+    
+            res.on('end', () => {
+                try {
+                    resolve(JSON.parse(resultado))
+                } catch(e) {
+                    reject(e)
+                }
+            })
+        })
+    })
+}
+
+
+let enderecoAux;
+
+enderecoAux = getEndereco('05650000').then(endereco => {
+    this.enderecoAux = endereco
+    dono.endereco.cep = endereco.cep;
+    dono.logradouro = endereco.logradouro;
+    dono.endereco.complemento = endereco.complemento;
+    dono.endereco.bairro = endereco.bairro;
+    dono.endereco.localidade = endereco.localidade;
+    dono.endereco.uf = endereco.uf;
+    return endereco;
+})
+.catch(e => console.log(e.message))
+
+console.log("aew", enderecoAux)
+/*
+     getTurma('B').then(alunos => {
+         nomes = nomes.concat(alunos.map(a => `B: ${a.nome}`))
+         getTurma('C').then(alunos => {
+             nomes = nomes.concat(alunos.map(a => `C: ${a.nome}`))
+             console.log(nomes)
+         })
+     })
+ })
+ 
+ Promise.all([getTurma('A'), getTurma('B'), getTurma('D')])
+    .then(turmas => [].concat(...turmas))
+    .then(alunos => alunos.map(aluno => aluno.nome))
+    .then(nomes => console.log(nomes))
+    .catch(e => console.log(e.message))
+*/
+    
+//getTurma('D').catch(e => console.log(e.message))
