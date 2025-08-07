@@ -4,15 +4,17 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 let marcador;
 
+
 const carrinho = [];
 
-function adicionarCarrinho(livro) {
+
+const adicionarCarrinho = (livro) => {
     carrinho.push(livro);
     atualizarCarrinho();
     alert(`Livro "${livro}" adicionado ao carrinho!`);
 }
 
-function atualizarCarrinho() {
+const atualizarCarrinho = () => {
     const contador = document.getElementById('carrinho-contador');
     const lista = document.getElementById('itens-carrinho');
     contador.innerText = carrinho.length;
@@ -24,17 +26,51 @@ function atualizarCarrinho() {
     });
 }
 
-function toggleCarrinho() {
+const toggleCarrinho = () => {
     const carrinhoEl = document.getElementById('carrinho');
     carrinhoEl.style.display = carrinhoEl.style.display === 'block' ? 'none' : 'block';
 }
 
-function esvaziarCarrinho() {
+const esvaziarCarrinho = () => {
     carrinho.length = 0;
     atualizarCarrinho();
 }
 
-function localizarEndereco() {
+const buscarEnderecoPorCep = async () => {
+    const cepInput = document.getElementById('cep');
+    const enderecoInput = document.getElementById('endereco');
+    const cep = cepInput.value.replace(/\D/g, '');
+
+    if (cep.length !== 8) {
+        return;
+    }
+
+    const url = `https://viacep.com.br/ws/${cep}/json/`;
+
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+
+        if (data.erro) {
+            alert('CEP não encontrado. Por favor, verifique o número digitado.');
+            enderecoInput.value = '';
+            return;
+        }
+
+        const enderecoCompleto = `${data.logradouro}, ${data.bairro}, ${data.localidade} - ${data.uf}`;
+        enderecoInput.value = enderecoCompleto;
+
+        localizarEndereco();
+
+    } catch (error) {
+        console.error('Erro ao buscar o CEP:', error);
+        alert('Não foi possível buscar o CEP. Verifique sua conexão ou tente novamente.');
+    }
+};
+
+document.getElementById('cep').addEventListener('blur', buscarEnderecoPorCep);
+
+const localizarEndereco = () => {
     const cep = document.getElementById('cep').value;
     const endereco = document.getElementById('endereco').value;
 
@@ -63,3 +99,5 @@ function localizarEndereco() {
         alert("Erro ao buscar localização. Tente novamente mais tarde.");
     });
 }
+
+//Carregar endereço do bind via CEP.
