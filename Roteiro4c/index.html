@@ -50,9 +50,15 @@
             <label for="endereco">Endereço:</label>
             <input type="text" id="endereco" placeholder="Rua, número, bairro">
             </div>
-            <button onclick="localizarEndereco()">Localizar no Mapa</button>
+            <button onclick="localizarEndereco(true)">Localizar no Mapa</button>
 
             <div id="map"></div>
+
+            <div id="delivery-info-card" class="info-card" style="display: none;">
+                <h3>Custo da Entrega</h3>
+                <p>Distância de LCC3 (UFCG) até seu endereço: <strong><span id="distancia-km">--</span> km</strong></p>
+                <p>Custo do frete: <strong>R$ <span id="custo-frete">--</span></strong></p>
+            </div>
         </main>
 
         <footer>
